@@ -77,7 +77,7 @@ class _AlarmMainScreenState extends State<AlarmMainScreen> {
                   CrossAxisAlignment.start,
                   children: [
                     Text(
-                      DateFormat.jm()
+                      DateFormat('yyyy-MM-dd – KK:mm')
                           .format(DateTime.parse(provider
                           .alarmList[index].alarmtime))
                           .toString(),
@@ -85,8 +85,7 @@ class _AlarmMainScreenState extends State<AlarmMainScreen> {
                           .textTheme
                           .titleLarge,
                     ),
-                    Text(
-                        provider.alarmList[index].label),
+                    Text(provider.alarmList[index].label),
                     Row(
                       children: [
                         Text(
@@ -106,7 +105,7 @@ class _AlarmMainScreenState extends State<AlarmMainScreen> {
                             enableDescriptions: true,
                             onEnd: (){
                               provider.showAlarm(index,provider.alarmList[index].label);
-                              provider.removeAlarm(index);
+                              provider.init();
                             },
                           ),
                         ),

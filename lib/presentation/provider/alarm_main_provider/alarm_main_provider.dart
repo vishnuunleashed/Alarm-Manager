@@ -43,8 +43,11 @@ class AlarmMainScreenProvder extends ChangeNotifier {
     notifyListeners();
   }
 
-  void removeAlarm(int index) {
+  Future<void> removeAlarm(int index) async {
     alarmList.removeAt(index);
+    Database db = await _databaseHelper.getDatabase();
+    db.execute("DELETE FROM alarmtable");
+
     insertToDb();
     notifyListeners();
   }
